@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Views/Shared/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        #menu ul li {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #000a44;
+            background-color: #0026ff;
+            line-height: 30px;
+            vertical-align: middle;
+        }
+
+        #menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: smaller;
+        }
+
+        #menu li:hover {
+            background-color: aqua;
+        }
+
+        #menu a:hover {
+            background-color: #000a44;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding:30px;">
+        <div id="menu">
+            @*header*@
+            <ul>
+                <li> @Html.ActionLink("Home Page", "HomePage", "Home")</li>
+                <li> @Html.ActionLink("About", "About", "Home")</li>
+                <li> @Html.ActionLink("Contaxt", "Index", "Home2")</li>
+            </ul>
+        </div>
+        <hr />
+        <div>
+            @RenderBody()
+        </div>
+        <hr />
+        <div>
+            @*footer*@
+            <b>Tüm Hakları Saklıdır. &copy;</b>
+        </div>
+        <hr />
+    </div>
+</body>
+</html>

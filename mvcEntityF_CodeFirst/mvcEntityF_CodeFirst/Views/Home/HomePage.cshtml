@@ -1,0 +1,38 @@
+﻿@model mvcEntityF_CodeFirst.ViewModels.Home.HomePageVM
+
+
+@{
+     ViewBag.Title = "HomePage"; 
+}
+
+
+    <h2>HomePage</h2>
+
+<div class="container-fluid col-md-12">
+
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary">Yeni Kişi</button><br /><br />
+        <ul class="list-group">
+            <li class="list-group-item active">Kisiler</li>
+            @foreach (var kis in Model.Kisiler)
+            {
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-user"></span>@("  "+kis.Ad + " " + kis.soyad + " " + kis.yas)
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary">Yeni Adres</button><br /><br />
+        <ul class="list-group">
+            <li class="list-group-item active">Adresler</li>
+            @foreach (var kis in Model.Adresler)
+            {
+
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-home"></span>@("  ") @kis.AdresTanım  <i>@(" " + kis.adreskisi.Ad + " " + kis.adreskisi.soyad) </i>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

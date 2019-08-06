@@ -1,0 +1,38 @@
+﻿@using mvcModel.ViewModels
+@model HomePageViewModel
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="container col-md-12">
+        <h1>Home Page</h1>
+        <hr />
+    </div>
+    <div class="container col-md-12" >
+       <div class="container col-md-3">
+          <h1>Kisi bilgileri</h1><br />
+          <b> Ad: </b> @Model.KisiNesnesi.Ad<br />
+          <b> SoyAd: </b> @Model.KisiNesnesi.Soyad<br />
+          <b> Yas: </b> @Model.KisiNesnesi.yas<br /><hr />
+       </div>
+       <div class="container col-md-3">
+          <h1>Adres bilgileri </h1><br />
+          <b>il: </b>@Model.AdresNesnesi.il <br />
+          <b>ilce: </b>@Model.AdresNesnesi.ilce <br />
+          <b>Sahip kişi bilgileri:</b>
+           @Model.AdresNesnesi.adresKisi.Ad
+           @Model.AdresNesnesi.adresKisi.Soyad
+           @Model.AdresNesnesi.adresKisi.yas
+       </div>
+    </div>
+</body>
+</html>

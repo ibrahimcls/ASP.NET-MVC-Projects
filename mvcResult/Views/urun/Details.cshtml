@@ -1,0 +1,42 @@
+﻿@model mvcResult.urun
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>urun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.urunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.urunFiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urunFiyati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.musteri.musteriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.musteri.musteriAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.urunID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

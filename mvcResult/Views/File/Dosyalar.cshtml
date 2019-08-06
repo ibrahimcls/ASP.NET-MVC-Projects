@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Dosyalar";
+}
+
+<h2>Dosyalar</h2>
+<div class="container">
+    <b>Pdf Dosyasını indir: </b> @Html.ActionLink("Tıkla", "pdfdosyaindir", "File", null, new { @class = "btn btn-primary" }) <br />
+    <b>Metin Dosyasını indir: </b> @Html.ActionLink("Tıkla", "metindosyaindir", "File", null, new { @class = "btn btn-primary" }) <br />
+</div>

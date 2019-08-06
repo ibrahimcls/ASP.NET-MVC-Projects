@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="verilerModelStoreContainer" CdmEntityContainer="verilerEntities1">
+    <EntitySetMapping Name="musteri">
+      <EntityTypeMapping TypeName="verilerModel.musteri">
+        <MappingFragment StoreEntitySet="musteri">
+          <ScalarProperty Name="test" ColumnName="test" />
+          <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+          <ScalarProperty Name="musteriAdi" ColumnName="musteriAdi" />
+          <ScalarProperty Name="musteriSoyadi" ColumnName="musteriSoyadi" />
+          <ScalarProperty Name="musteriEmail" ColumnName="musteriEmail" />
+          <ScalarProperty Name="musteriYas" ColumnName="musteriYas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urun">
+      <EntityTypeMapping TypeName="verilerModel.urun">
+        <MappingFragment StoreEntitySet="urun">
+          <ScalarProperty Name="urunID" ColumnName="urunID" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+          <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

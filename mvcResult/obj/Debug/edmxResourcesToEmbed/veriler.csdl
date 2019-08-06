@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="verilerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="musteri">
+    <Key>
+      <PropertyRef Name="musteriID" />
+    </Key>
+    <Property Name="musteriID" Type="Int32" Nullable="false" />
+    <Property Name="musteriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="musteriSoyadi" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+    <Property Name="musteriEmail" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="musteriYas" Type="Int32" />
+    <NavigationProperty Name="urun" Relationship="Self.FK_urun_musteri" FromRole="musteri" ToRole="urun" />
+    <Property Name="test" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="urun">
+    <Key>
+      <PropertyRef Name="urunID" />
+    </Key>
+    <Property Name="urunID" Type="Int32" Nullable="false" />
+    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="urunFiyati" Type="Int32" Nullable="false" />
+    <Property Name="musteriID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="musteri" Relationship="Self.FK_urun_musteri" FromRole="urun" ToRole="musteri" />
+  </EntityType>
+  <Association Name="FK_urun_musteri">
+    <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="musteri">
+        <PropertyRef Name="musteriID" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="musteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="verilerEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="musteri" EntityType="Self.musteri" />
+    <EntitySet Name="urun" EntityType="Self.urun" />
+    <AssociationSet Name="FK_urun_musteri" Association="Self.FK_urun_musteri">
+      <End Role="musteri" EntitySet="musteri" />
+      <End Role="urun" EntitySet="urun" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

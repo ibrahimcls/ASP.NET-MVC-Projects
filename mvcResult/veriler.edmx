@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="verilerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="musteri">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="int" Nullable="false" />
+          <Property Name="musteriAdi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="musteriSoyadi" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="musteriEmail" Type="varbinary" MaxLength="50" />
+          <Property Name="musteriYas" Type="int" />
+          <Property Name="test" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="urunAdi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="urunFiyati" Type="int" Nullable="false" />
+          <Property Name="musteriID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_urun_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="urun" Type="Self.urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="urun">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="verilerModelStoreContainer">
+          <EntitySet Name="musteri" EntityType="Self.musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_urun_musteri" Association="Self.FK_urun_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="urun" EntitySet="urun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="verilerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="musteri">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="Int32" Nullable="false" />
+          <Property Name="musteriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="musteriSoyadi" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="musteriEmail" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="musteriYas" Type="Int32" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_urun_musteri" FromRole="musteri" ToRole="urun" />
+          <Property Name="test" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="urunFiyati" Type="Int32" Nullable="false" />
+          <Property Name="musteriID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="musteri" Relationship="Self.FK_urun_musteri" FromRole="urun" ToRole="musteri" />
+        </EntityType>
+        <Association Name="FK_urun_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="urun" Type="Self.urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="urun">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="verilerEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="musteri" EntityType="Self.musteri" />
+          <EntitySet Name="urun" EntityType="Self.urun" />
+          <AssociationSet Name="FK_urun_musteri" Association="Self.FK_urun_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="urun" EntitySet="urun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="verilerModelStoreContainer" CdmEntityContainer="verilerEntities1">
+          <EntitySetMapping Name="musteri">
+            <EntityTypeMapping TypeName="verilerModel.musteri">
+              <MappingFragment StoreEntitySet="musteri">
+                <ScalarProperty Name="test" ColumnName="test" />
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+                <ScalarProperty Name="musteriAdi" ColumnName="musteriAdi" />
+                <ScalarProperty Name="musteriSoyadi" ColumnName="musteriSoyadi" />
+                <ScalarProperty Name="musteriEmail" ColumnName="musteriEmail" />
+                <ScalarProperty Name="musteriYas" ColumnName="musteriYas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urun">
+            <EntityTypeMapping TypeName="verilerModel.urun">
+              <MappingFragment StoreEntitySet="urun">
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+                <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

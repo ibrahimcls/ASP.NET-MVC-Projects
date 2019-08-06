@@ -1,0 +1,48 @@
+﻿@model mvcResult.urun
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>urun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.urunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.urunFiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urunFiyati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.musteri.musteriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.musteri.musteriAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

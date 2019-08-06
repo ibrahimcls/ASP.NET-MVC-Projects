@@ -1,0 +1,51 @@
+﻿@model IEnumerable<mvcResult.musteri>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.musteriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteriSoyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteriEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.musteriYas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteriSoyadi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteriEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.musteriYas)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.musteriID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.musteriID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.musteriID })
+        </td>
+    </tr>
+}
+
+</table>

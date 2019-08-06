@@ -1,0 +1,50 @@
+﻿@model mvcResult.musteri
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>musteri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.musteriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.musteriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.musteriSoyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.musteriSoyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.musteriEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.musteriEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.musteriYas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.musteriYas)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.musteriID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

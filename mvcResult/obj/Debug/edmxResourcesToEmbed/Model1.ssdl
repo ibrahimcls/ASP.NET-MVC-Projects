@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="verilerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'veriler.dbo.Musteri' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Musteri">
+          <Property Name="MusteriID" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="urunID" />
+    </Key>
+    <Property Name="urunID" Type="int" Nullable="false" />
+    <Property Name="urunAdi" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="urunAciklama" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="urunFiyat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="verilerModelStoreContainer">
+    <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

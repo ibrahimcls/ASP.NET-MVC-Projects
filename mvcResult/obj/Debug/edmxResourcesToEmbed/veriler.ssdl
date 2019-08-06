@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="verilerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="musteri">
+    <Key>
+      <PropertyRef Name="musteriID" />
+    </Key>
+    <Property Name="musteriID" Type="int" Nullable="false" />
+    <Property Name="musteriAdi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="musteriSoyadi" Type="varbinary" MaxLength="50" Nullable="false" />
+    <Property Name="musteriEmail" Type="varbinary" MaxLength="50" />
+    <Property Name="musteriYas" Type="int" />
+    <Property Name="test" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="urun">
+    <Key>
+      <PropertyRef Name="urunID" />
+    </Key>
+    <Property Name="urunID" Type="int" Nullable="false" />
+    <Property Name="urunAdi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="urunFiyati" Type="int" Nullable="false" />
+    <Property Name="musteriID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_urun_musteri">
+    <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="musteri">
+        <PropertyRef Name="musteriID" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="musteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="verilerModelStoreContainer">
+    <EntitySet Name="musteri" EntityType="Self.musteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_urun_musteri" Association="Self.FK_urun_musteri">
+      <End Role="musteri" EntitySet="musteri" />
+      <End Role="urun" EntitySet="urun" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
